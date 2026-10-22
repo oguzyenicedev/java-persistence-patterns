@@ -1,10 +1,6 @@
 package com.oguz.entity;
-import com.oguz.entity.Car;
-import com.oguz.entity.Slot;
+
 import jakarta.persistence.*;
-
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,60 +11,55 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ticketId;
 
-
     @ManyToOne
-    @JoinColumn(name = "slot_ıd")
+    @JoinColumn(name = "slot_id")
     private Slot slot;
 
-
-    @ManyToOne
-    @JoinColumn (name = "car_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
     private Car car;
 
-    @Column(name = "entry_time" , nullable = false)
+    @Column(name = "entry_time", nullable = false)
     private LocalDateTime entryTime;
 
-    @Column (name = "exit_time")
+    @Column(name = "exit_time")
     private LocalDateTime exitTime;
 
-    public Ticket(int ticketId , Slot slot , Car car , LocalDateTime entryTime , LocalDateTime exitTime){
-       this.ticketId = ticketId;
-       this.slot = slot;
-       this.car = car;
-       this.entryTime = entryTime;
-       this.exitTime = exitTime;
-    }
+    @Column(name = "total_price")
+    private double totalPrice;
 
-    public Ticket(Slot slot , Car car , LocalDateTime entryTime , LocalDateTime exitTime){
+    public Ticket() {}
 
-    }
-
-
-    public Ticket(){
-
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
-    public Slot getSlot() {
-        return slot;
-    }
-
-    public void setSlot(Slot slot) {
+    public Ticket(Slot slot, Car car, LocalDateTime entryTime, LocalDateTime exitTime) {
         this.slot = slot;
+        this.car = car;
+        this.entryTime = entryTime;
+        this.exitTime = exitTime;
     }
 
-    public int getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(int ticketId) {
+    public Ticket(int ticketId, Slot slot, Car car, LocalDateTime entryTime, LocalDateTime exitTime) {
         this.ticketId = ticketId;
+        this.slot = slot;
+        this.car = car;
+        this.entryTime = entryTime;
+        this.exitTime = exitTime;
     }
+
+    public int getTicketId() { return ticketId; }
+    public void setTicketId(int ticketId) { this.ticketId = ticketId; }
+
+    public Slot getSlot() { return slot; }
+    public void setSlot(Slot slot) { this.slot = slot; }
+
+    public Car getCar() { return car; }
+    public void setCar(Car car) { this.car = car; }
+
+    public LocalDateTime getEntryTime() { return entryTime; }
+    public void setEntryTime(LocalDateTime entryTime) { this.entryTime = entryTime; }
+
+    public LocalDateTime getExitTime() { return exitTime; }
+    public void setExitTime(LocalDateTime exitTime) { this.exitTime = exitTime; }
+
+    public double getTotalPrice() { return totalPrice; }
+    public void setTotalPrice(double totalPrice) { this.totalPrice = totalPrice; }
 }
