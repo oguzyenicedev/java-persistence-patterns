@@ -1,4 +1,5 @@
 package com.oguz.entity;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -6,29 +7,24 @@ import jakarta.persistence.*;
 public class Car {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int carId;
 
-
-    @Column (name = "car_number" , nullable = false , length = 50)
+    @Column(name = "car_number", nullable = false)
     private int carNumber;
 
-    @Column (name = "car_model" , nullable = false , length = 50)
+    @Column(name = "car_model", nullable = false, length = 50)
     private String carModel;
 
-    public Car(){
+    public Car() {}
 
-    }
-
-    public Car(int carId , int carNumber , String carModel){
-
+    public Car(int carId, int carNumber, String carModel) {
         this.carId = carId;
         this.carNumber = carNumber;
         this.carModel = carModel;
-
     }
 
-    public Car(int carNumber , String carModel){
+    public Car(int carNumber, String carModel) {
         this.carNumber = carNumber;
         this.carModel = carModel;
     }
