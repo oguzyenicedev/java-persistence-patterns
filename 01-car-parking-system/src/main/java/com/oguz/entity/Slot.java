@@ -10,18 +10,16 @@ public class Slot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int slotId;
 
-    @Column(name = "number", nullable = false, length = 50)
+    @Column(name = "number", nullable = false)
     private int number;
 
-    @Column(name = "floor_number", nullable = false, length = 50)
+    @Column(name = "floor_number", nullable = false)
     private int floorNumber;
 
-    @Column(name = "isOccupied", nullable = false, length = 50)
+    @Column(name = "is_occupied", nullable = false)
     private boolean isOccupied;
 
-
-    public Slot() {
-    }
+    public Slot() {}
 
     public Slot(int slotId, int number, int floorNumber) {
         this.slotId = slotId;
@@ -29,10 +27,10 @@ public class Slot {
         this.floorNumber = floorNumber;
     }
 
-    public Slot(int number, int floorNumber , boolean isOccupied) {
-        this.isOccupied = isOccupied;
+    public Slot(int number, int floorNumber, boolean isOccupied) {
         this.number = number;
         this.floorNumber = floorNumber;
+        this.isOccupied = isOccupied;
     }
 
     public boolean isOccupied() {
